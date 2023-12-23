@@ -1,15 +1,14 @@
-import heapq
 import sys
-from heapq import heappush
 
-N = int(sys.stdin.readline().strip())
-heap = []
+N = int(sys.stdin.readline())
 
-for _ in range(N):
-    temp = sys.stdin.readline().strip().split(" ")
-    time = int(temp[0]) * 10000 + int(temp[1]) * 100 + int(temp[2])
-    heappush(heap, time)
+cows = []
 
 for _ in range(N):
-    time = heapq.heappop(heap)
-    print(f"{time // 10000} {(time // 100) % 100} {time % 100}")
+    hour, minute, second = map(int,sys.stdin.readline().split())
+    time = hour*3600 + minute * 60 + second
+    cows.append((time,hour,minute,second))
+
+cows.sort()
+for cow in cows:
+    print(cow[1],cow[2],cow[3])
